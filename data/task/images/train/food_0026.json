@@ -1,0 +1,127 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "tool",
+      "score": 0.8904154896736145,
+      "points": [
+        [
+          692.1845703125,
+          170.7283935546875
+        ],
+        [
+          826.3328857421875,
+          170.7283935546875
+        ],
+        [
+          826.3328857421875,
+          303.422119140625
+        ],
+        [
+          692.1845703125,
+          303.422119140625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.8757931590080261,
+      "points": [
+        [
+          1272.51953125,
+          345.0289306640625
+        ],
+        [
+          1468.872314453125,
+          345.0289306640625
+        ],
+        [
+          1468.872314453125,
+          659.7984619140625
+        ],
+        [
+          1272.51953125,
+          659.7984619140625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.827799916267395,
+      "points": [
+        [
+          884.81640625,
+          507.18243408203125
+        ],
+        [
+          1274.916015625,
+          507.18243408203125
+        ],
+        [
+          1274.916015625,
+          794.200439453125
+        ],
+        [
+          884.81640625,
+          794.200439453125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.6934208273887634,
+      "points": [
+        [
+          1016.2493286132812,
+          252.1856689453125
+        ],
+        [
+          1276.582275390625,
+          252.1856689453125
+        ],
+        [
+          1276.582275390625,
+          404.9102783203125
+        ],
+        [
+          1016.2493286132812,
+          404.9102783203125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "food_0026.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

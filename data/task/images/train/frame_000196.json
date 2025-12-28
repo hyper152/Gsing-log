@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "food",
+      "score": 0.8855350613594055,
+      "points": [
+        [
+          1624.5613606770833,
+          593.1979166666666
+        ],
+        [
+          1726.6541341145833,
+          593.1979166666666
+        ],
+        [
+          1726.6541341145833,
+          717.8473307291666
+        ],
+        [
+          1624.5613606770833,
+          717.8473307291666
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.5054092407226562,
+      "points": [
+        [
+          1411.3850911458333,
+          772.0965169270834
+        ],
+        [
+          1505.4759114583333,
+          772.0965169270834
+        ],
+        [
+          1505.4759114583333,
+          889.4415690104166
+        ],
+        [
+          1411.3850911458333,
+          889.4415690104166
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.46166449785232544,
+      "points": [
+        [
+          1972.9052734375,
+          707.7150065104166
+        ],
+        [
+          2058.6285807291665,
+          707.7150065104166
+        ],
+        [
+          2058.6285807291665,
+          815.6700846354166
+        ],
+        [
+          1972.9052734375,
+          815.6700846354166
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "frame_000196.jpg",
+  "imageData": null,
+  "imageHeight": 1440,
+  "imageWidth": 2560,
+  "description": ""
+}

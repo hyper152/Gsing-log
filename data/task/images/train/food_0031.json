@@ -1,0 +1,69 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "remedy",
+      "score": 0.9028241634368896,
+      "points": [
+        [
+          728.8980712890625,
+          279.90765380859375
+        ],
+        [
+          885.5052490234375,
+          279.90765380859375
+        ],
+        [
+          885.5052490234375,
+          433.92828369140625
+        ],
+        [
+          728.8980712890625,
+          433.92828369140625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8967623114585876,
+      "points": [
+        [
+          865.1884765625,
+          178.59368896484375
+        ],
+        [
+          997.986572265625,
+          178.59368896484375
+        ],
+        [
+          997.986572265625,
+          312.32135009765625
+        ],
+        [
+          865.1884765625,
+          312.32135009765625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "food_0031.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

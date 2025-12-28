@@ -1,0 +1,40 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "tool",
+      "score": 0.4570392966270447,
+      "points": [
+        [
+          598.0567016601562,
+          424.656005859375
+        ],
+        [
+          950.1021118164062,
+          424.656005859375
+        ],
+        [
+          950.1021118164062,
+          694.306396484375
+        ],
+        [
+          598.0567016601562,
+          694.306396484375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "tool_0024.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

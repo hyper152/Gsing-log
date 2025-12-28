@@ -1,0 +1,40 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "food",
+      "score": 0.8864534497261047,
+      "points": [
+        [
+          359.0609537760417,
+          275.958740234375
+        ],
+        [
+          671.5397135416666,
+          275.958740234375
+        ],
+        [
+          671.5397135416666,
+          609.2113444010416
+        ],
+        [
+          359.0609537760417,
+          609.2113444010416
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "img_20251203_152535_696553.jpg",
+  "imageData": null,
+  "imageHeight": 720,
+  "imageWidth": 1280,
+  "description": ""
+}

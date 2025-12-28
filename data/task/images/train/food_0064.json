@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "food",
+      "score": 0.8500994443893433,
+      "points": [
+        [
+          745.7387084960938,
+          134.36895751953125
+        ],
+        [
+          977.2973022460938,
+          134.36895751953125
+        ],
+        [
+          977.2973022460938,
+          318.27838134765625
+        ],
+        [
+          745.7387084960938,
+          318.27838134765625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.7830648422241211,
+      "points": [
+        [
+          934.96923828125,
+          349.5008544921875
+        ],
+        [
+          1204.503662109375,
+          349.5008544921875
+        ],
+        [
+          1204.503662109375,
+          729.7523193359375
+        ],
+        [
+          934.96923828125,
+          729.7523193359375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.5600579977035522,
+      "points": [
+        [
+          494.89410400390625,
+          315.78277587890625
+        ],
+        [
+          811.6934204101562,
+          315.78277587890625
+        ],
+        [
+          811.6934204101562,
+          923.20751953125
+        ],
+        [
+          494.89410400390625,
+          923.20751953125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "food_0064.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

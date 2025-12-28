@@ -1,0 +1,40 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "tool",
+      "score": 0.2672542929649353,
+      "points": [
+        [
+          212.47073364257812,
+          2.540679931640625
+        ],
+        [
+          337.6879577636719,
+          2.540679931640625
+        ],
+        [
+          337.6879577636719,
+          65.60330200195312
+        ],
+        [
+          212.47073364257812,
+          65.60330200195312
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "medicine2_0060.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

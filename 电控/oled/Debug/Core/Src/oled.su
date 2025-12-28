@@ -1,0 +1,8 @@
+../Core/Src/oled.c:34:13:OLED_WriteCommand	32	static
+../Core/Src/oled.c:38:13:OLED_WriteData	32	static
+../Core/Src/oled.c:43:13:GetRandomPos	16	static
+../Core/Src/oled.c:51:6:OLED_Init	16	static
+../Core/Src/oled.c:71:6:OLED_Clear	16	static
+../Core/Src/oled.c:84:6:OLED_ShowChar	24	static
+../Core/Src/oled.c:102:13:OLED_ShowHyperAt	24	static
+../Core/Src/oled.c:109:6:OLED_ShowMainLogic	16	static

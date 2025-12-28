@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "device",
+      "score": 0.8602917194366455,
+      "points": [
+        [
+          757.6444091796875,
+          248.7685546875
+        ],
+        [
+          959.7562255859375,
+          248.7685546875
+        ],
+        [
+          959.7562255859375,
+          514.6728515625
+        ],
+        [
+          757.6444091796875,
+          514.6728515625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.8598973155021667,
+      "points": [
+        [
+          751.602294921875,
+          854.8875732421875
+        ],
+        [
+          935.340576171875,
+          854.8875732421875
+        ],
+        [
+          935.340576171875,
+          1054.7823486328125
+        ],
+        [
+          751.602294921875,
+          1054.7823486328125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8417875170707703,
+      "points": [
+        [
+          753.3367919921875,
+          558.233642578125
+        ],
+        [
+          941.1676025390625,
+          558.233642578125
+        ],
+        [
+          941.1676025390625,
+          776.164794921875
+        ],
+        [
+          753.3367919921875,
+          776.164794921875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "cap_20251219_155948_748_1766131158.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

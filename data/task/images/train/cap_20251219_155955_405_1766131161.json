@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "remedy",
+      "score": 0.8538301587104797,
+      "points": [
+        [
+          615.3284301757812,
+          402.1802978515625
+        ],
+        [
+          852.0435180664062,
+          402.1802978515625
+        ],
+        [
+          852.0435180664062,
+          773.3553466796875
+        ],
+        [
+          615.3284301757812,
+          773.3553466796875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.8001384735107422,
+      "points": [
+        [
+          296.83990478515625,
+          321.1458740234375
+        ],
+        [
+          467.56219482421875,
+          321.1458740234375
+        ],
+        [
+          467.56219482421875,
+          738.2574462890625
+        ],
+        [
+          296.83990478515625,
+          738.2574462890625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.506538987159729,
+      "points": [
+        [
+          239.8907470703125,
+          800.28759765625
+        ],
+        [
+          386.83355712890625,
+          800.28759765625
+        ],
+        [
+          386.83355712890625,
+          1052.503173828125
+        ],
+        [
+          239.8907470703125,
+          1052.503173828125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "cap_20251219_155955_405_1766131161.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "tool",
+      "score": 0.9238688349723816,
+      "points": [
+        [
+          323.54412841796875,
+          3.9873046875
+        ],
+        [
+          463.51422119140625,
+          3.9873046875
+        ],
+        [
+          463.51422119140625,
+          145.5528564453125
+        ],
+        [
+          323.54412841796875,
+          145.5528564453125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8789201974868774,
+      "points": [
+        [
+          198.1208038330078,
+          3.03509521484375
+        ],
+        [
+          323.57940673828125,
+          3.03509521484375
+        ],
+        [
+          323.57940673828125,
+          151.53778076171875
+        ],
+        [
+          198.1208038330078,
+          151.53778076171875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.45538973808288574,
+      "points": [
+        [
+          720.1887817382812,
+          530.444580078125
+        ],
+        [
+          1008.0805053710938,
+          530.444580078125
+        ],
+        [
+          1008.0805053710938,
+          749.351806640625
+        ],
+        [
+          720.1887817382812,
+          749.351806640625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "medicine2_0047.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

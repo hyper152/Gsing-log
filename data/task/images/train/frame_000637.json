@@ -1,0 +1,185 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "device",
+      "score": 0.8848048448562622,
+      "points": [
+        [
+          1310.2412109375,
+          647.0680338541666
+        ],
+        [
+          1409.6686197916667,
+          647.0680338541666
+        ],
+        [
+          1409.6686197916667,
+          754.3391927083334
+        ],
+        [
+          1310.2412109375,
+          754.3391927083334
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.850315511226654,
+      "points": [
+        [
+          1781.9466145833333,
+          787.1258138020834
+        ],
+        [
+          1887.3069661458333,
+          787.1258138020834
+        ],
+        [
+          1887.3069661458333,
+          902.72607421875
+        ],
+        [
+          1781.9466145833333,
+          902.72607421875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.8265177607536316,
+      "points": [
+        [
+          1312.41845703125,
+          775.5250651041666
+        ],
+        [
+          1417.59130859375,
+          775.5250651041666
+        ],
+        [
+          1417.59130859375,
+          882.8059895833334
+        ],
+        [
+          1312.41845703125,
+          882.8059895833334
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8221789598464966,
+      "points": [
+        [
+          1539.9220377604167,
+          778.8727213541666
+        ],
+        [
+          1636.0548502604167,
+          778.8727213541666
+        ],
+        [
+          1636.0548502604167,
+          888.9661458333334
+        ],
+        [
+          1539.9220377604167,
+          888.9661458333334
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.8050237894058228,
+      "points": [
+        [
+          1542.1417643229167,
+          646.4833984375
+        ],
+        [
+          1643.1407877604167,
+          646.4833984375
+        ],
+        [
+          1643.1407877604167,
+          753.2345377604166
+        ],
+        [
+          1542.1417643229167,
+          753.2345377604166
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "device",
+      "score": 0.748691201210022,
+      "points": [
+        [
+          1785.51171875,
+          638.9099934895834
+        ],
+        [
+          1899.6751302083333,
+          638.9099934895834
+        ],
+        [
+          1899.6751302083333,
+          769.0768229166666
+        ],
+        [
+          1785.51171875,
+          769.0768229166666
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "frame_000637.jpg",
+  "imageData": null,
+  "imageHeight": 1440,
+  "imageWidth": 2560,
+  "description": ""
+}

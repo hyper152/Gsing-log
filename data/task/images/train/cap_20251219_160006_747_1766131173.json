@@ -1,0 +1,127 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "food",
+      "score": 0.7600311040878296,
+      "points": [
+        [
+          567.9962158203125,
+          851.543212890625
+        ],
+        [
+          808.6348876953125,
+          851.543212890625
+        ],
+        [
+          808.6348876953125,
+          1051.214111328125
+        ],
+        [
+          567.9962158203125,
+          1051.214111328125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.7589163780212402,
+      "points": [
+        [
+          591.2291259765625,
+          409.9522705078125
+        ],
+        [
+          857.5953369140625,
+          409.9522705078125
+        ],
+        [
+          857.5953369140625,
+          783.2286376953125
+        ],
+        [
+          591.2291259765625,
+          783.2286376953125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.5436704754829407,
+      "points": [
+        [
+          973.2823486328125,
+          437.7767333984375
+        ],
+        [
+          1098.7332763671875,
+          437.7767333984375
+        ],
+        [
+          1098.7332763671875,
+          756.0635986328125
+        ],
+        [
+          973.2823486328125,
+          756.0635986328125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.47673332691192627,
+      "points": [
+        [
+          909.2884521484375,
+          865.225830078125
+        ],
+        [
+          1058.20654296875,
+          865.225830078125
+        ],
+        [
+          1058.20654296875,
+          1053.692138671875
+        ],
+        [
+          909.2884521484375,
+          1053.692138671875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "cap_20251219_160006_747_1766131173.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

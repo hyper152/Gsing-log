@@ -1,0 +1,2 @@
+../User/hardware/axis.c:15:6:Axis_init	8	static
+../User/hardware/axis.c:22:6:Axis_read	8	static

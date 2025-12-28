@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "remedy",
+      "score": 0.86662358045578,
+      "points": [
+        [
+          1431.400634765625,
+          375.294921875
+        ],
+        [
+          1616.386474609375,
+          375.294921875
+        ],
+        [
+          1616.386474609375,
+          535.885498046875
+        ],
+        [
+          1431.400634765625,
+          535.885498046875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8348482847213745,
+      "points": [
+        [
+          361.38232421875,
+          441.94189453125
+        ],
+        [
+          620.96484375,
+          441.94189453125
+        ],
+        [
+          620.96484375,
+          685.159912109375
+        ],
+        [
+          361.38232421875,
+          685.159912109375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.36098188161849976,
+      "points": [
+        [
+          1431.3511962890625,
+          374.9918212890625
+        ],
+        [
+          1617.1102294921875,
+          374.9918212890625
+        ],
+        [
+          1617.1102294921875,
+          535.3485107421875
+        ],
+        [
+          1431.3511962890625,
+          535.3485107421875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "tool_0047.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

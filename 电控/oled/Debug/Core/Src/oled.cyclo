@@ -1,0 +1,8 @@
+../Core/Src/oled.c:34:13:OLED_WriteCommand	1
+../Core/Src/oled.c:38:13:OLED_WriteData	1
+../Core/Src/oled.c:43:13:GetRandomPos	1
+../Core/Src/oled.c:51:6:OLED_Init	1
+../Core/Src/oled.c:71:6:OLED_Clear	3
+../Core/Src/oled.c:84:6:OLED_ShowChar	5
+../Core/Src/oled.c:102:13:OLED_ShowHyperAt	2
+../Core/Src/oled.c:109:6:OLED_ShowMainLogic	2

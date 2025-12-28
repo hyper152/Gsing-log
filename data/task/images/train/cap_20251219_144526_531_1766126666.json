@@ -1,0 +1,40 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "device",
+      "score": 0.8356415629386902,
+      "points": [
+        [
+          601.5955810546875,
+          325.697509765625
+        ],
+        [
+          939.966552734375,
+          325.697509765625
+        ],
+        [
+          939.966552734375,
+          712.37841796875
+        ],
+        [
+          601.5955810546875,
+          712.37841796875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "cap_20251219_144526_531_1766126666.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

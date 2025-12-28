@@ -1,0 +1,4 @@
+../Core/Src/ax_ps2.c:40:6:AX_PS2_Init	1
+../Core/Src/ax_ps2.c:143:6:AX_Delayus	1
+../Core/Src/ax_ps2.c:154:6:delay_us	6
+../Core/Src/ax_ps2.c:112:6:AX_PS2_ScanKey	5

@@ -1,0 +1,69 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "device",
+      "score": 0.8712970018386841,
+      "points": [
+        [
+          728.947509765625,
+          526.4154663085938
+        ],
+        [
+          1143.45654296875,
+          526.4154663085938
+        ],
+        [
+          1143.45654296875,
+          1002.328125
+        ],
+        [
+          728.947509765625,
+          1002.328125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.7515819072723389,
+      "points": [
+        [
+          165.03802490234375,
+          42.396240234375
+        ],
+        [
+          227.45346069335938,
+          42.396240234375
+        ],
+        [
+          227.45346069335938,
+          103.1551513671875
+        ],
+        [
+          165.03802490234375,
+          103.1551513671875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "instrument_0113.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

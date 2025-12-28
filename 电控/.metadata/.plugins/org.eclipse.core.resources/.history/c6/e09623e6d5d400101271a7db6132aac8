@@ -1,0 +1,246 @@
+#include "oled.h"
+#include <string.h>
+#include "main.h"
+
+// 全局I2C句柄
+static I2C_HandleTypeDef *oled_hi2c;
+
+// 屏幕/字符参数（适配10x24点阵）
+#define SCREEN_WIDTH  128   // OLED屏幕宽度
+#define SCREEN_HEIGHT 64    // OLED屏幕高度
+#define CHAR_WIDTH    10    // 字符宽度（10像素）
+#define CHAR_HEIGHT   24    // 字符高度（24像素）
+#define FAZE_UP_LEN   6     // "faze up"字符数（f/a/z/e/u/p，共6个）
+#define HYPER_LEN     5     // "hyper"字符数
+
+// 状态枚举：0-显示hyper，1-滚动显示faze up
+typedef enum {
+    SHOW_HYPER,
+    SCROLL_FAZE_UP
+} DisplayState;
+
+// 静态全局变量（驱动层内部使用）
+static DisplayState current_state = SHOW_HYPER;
+static uint32_t hyper_show_time = 0;
+static const uint32_t HYPER_DURATION = 2000; // hyper显示时长(ms)
+static int16_t scroll_y = SCREEN_HEIGHT;     // faze up滚动Y坐标
+
+// 内部函数声明
+static void OLED_WriteCommand(uint8_t cmd);
+static void OLED_WriteData(uint8_t data);
+static uint8_t GetCenterX(uint8_t char_count, uint8_t char_width);
+static void OLED_ShowFaZeUp(int16_t y);
+static void OLED_ShowHyper(void);
+
+// ====================== 点阵数据 ======================
+// hyper字符点阵（8x16，保持原有显示逻辑）
+const uint8_t ASCII_8x16[HYPER_LEN][16] = {
+    // h (索引0)
+    [0] = {0x00,0x80,0x00,0x04,0x84,0xFC,0x04,0x04,0x00,0x01,0x01,0x01,0x00,0x01,0x01,0x01},
+    // y (索引1)
+    [1] = {0x00,0xE8,0x24,0x24,0x24,0x24,0xF8,0x00,0x00,0x00,0x01,0x01,0x01,0x01,0x00,0x00},
+    // p (索引2)
+    [2] = {0x00,0x70,0x88,0x04,0x04,0x89,0xFF,0x01,0x00,0x00,0x00,0x01,0x01,0x00,0x01,0x01},
+    // e (索引3)
+    [3] = {0x00,0x80,0x60,0x18,0x1E,0x61,0x81,0x00,0x01,0x01,0x01,0x00,0x00,0x01,0x01,0x01},
+    // r (索引4)
+    [4] = {0x04,0xFC,0x04,0x00,0x00,0x84,0xFC,0x04,0x00,0x00,0x01,0x01,0x01,0x00,0x0F,0x08}
+};
+
+// faze up字符点阵（10x24，@SimSun-ExtB14字体，按f/a/z/e/u/p顺序）
+const uint8_t FAZE_UP_10x24[FAZE_UP_LEN][30] = {
+    // f (10x24)
+    {0x80,0x80,0x80,0xF0,0xF8,0x88,0x88,0x98,0x18,0x00,0x00,0x80,0x80,0xFF,0xFF,0x80,
+     0x80,0x80,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
+    // a (10x24)
+    {0x00,0x00,0x80,0x80,0x80,0x80,0x80,0x00,0x00,0x00,0x70,0xFB,0xFB,0x8C,0x84,0xC4,
+     0xFF,0xFF,0xC0,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
+    // z (10x24)
+    {0x00,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x00,0x00,0x80,0xC3,0xF3,0xF8,0x9E,0x8F,
+     0xC3,0xF1,0x60,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
+    // e (10x24)
+    {0x00,0x00,0x80,0x80,0x80,0x80,0x80,0x00,0x00,0x00,0x1C,0x7F,0xFF,0xC9,0x88,0x88,
+     0xCF,0x6F,0x2E,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
+    // u (10x24)
+    {0x80,0x80,0x80,0x00,0x00,0x80,0x80,0x80,0x00,0x00,0x00,0x7F,0xFF,0xC0,0x80,0xC0,
+     0xFF,0xFF,0xC0,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
+    // p (10x24)
+    {0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x80,0x00,0x00,0x00,0xFF,0xFF,0xC1,0x80,0xC0,
+     0xE3,0x7F,0x3F,0x00,0x04,0x07,0x07,0x04,0x00,0x00,0x00,0x00,0x00,0x00}
+};
+
+// ====================== 内部工具函数 ======================
+// hyper字符索引映射
+static uint8_t get_hyper_index(uint8_t ch) {
+  switch(ch) {
+    case 'h': return 0;
+    case 'y': return 1;
+    case 'p': return 2;
+    case 'e': return 3;
+    case 'r': return 4;
+    default: return 0; // 未知字符显示h
+  }
+}
+
+// 计算居中X坐标（适配任意字符宽度）
+static uint8_t GetCenterX(uint8_t char_count, uint8_t char_width) {
+    return (SCREEN_WIDTH - char_count * char_width) / 2;
+}
+
+// ====================== 底层通信函数 ======================
+// 发送OLED命令（I2C超时1秒）
+static void OLED_WriteCommand(uint8_t cmd) {
+  HAL_I2C_Mem_Write(oled_hi2c, OLED_ADDR, 0x00, I2C_MEMADD_SIZE_8BIT, &cmd, 1, 1000);
+}
+
+// 发送OLED数据（I2C超时1秒）
+static void OLED_WriteData(uint8_t data) {
+  HAL_I2C_Mem_Write(oled_hi2c, OLED_ADDR, 0x40, I2C_MEMADD_SIZE_8BIT, &data, 1, 1000);
+}
+
+// ====================== 核心显示函数 ======================
+// OLED初始化（适配10x24点阵显示）
+void OLED_Init(I2C_HandleTypeDef *hi2c) {
+  oled_hi2c = hi2c;
+  HAL_Delay(300);  // 延长上电延时，适配所有OLED屏
+
+  // OLED初始化指令集
+  OLED_WriteCommand(0xAE); // 关闭显示
+  OLED_WriteCommand(0x20); // 设置内存寻址模式：页寻址
+  OLED_WriteCommand(0x02);
+  OLED_WriteCommand(0x00); // 列地址低4位
+  OLED_WriteCommand(0x10); // 列地址高4位
+  OLED_WriteCommand(0x40); // 设置起始行
+  OLED_WriteCommand(0xA0); // 段重映射（匹配点阵方向）
+  OLED_WriteCommand(0xC0); // COM扫描方向（匹配点阵方向）
+  OLED_WriteCommand(0xA6); // 正常显示
+  OLED_WriteCommand(0xA8); // 多路复用率（64行）
+  OLED_WriteCommand(0x3F);
+  OLED_WriteCommand(0xD3); // 显示偏移（无偏移）
+  OLED_WriteCommand(0x00);
+  OLED_WriteCommand(0xD5); // 时钟分频
+  OLED_WriteCommand(0x80);
+  OLED_WriteCommand(0xD9); // 预充电周期
+  OLED_WriteCommand(0xF1);
+  OLED_WriteCommand(0xDA); // COM引脚配置
+  OLED_WriteCommand(0x12);
+  OLED_WriteCommand(0xDB); // VCOMH电平
+  OLED_WriteCommand(0x40);
+  OLED_WriteCommand(0x8D); // 开启电荷泵
+  OLED_WriteCommand(0x14);
+  OLED_WriteCommand(0xAF); // 开启显示
+
+  OLED_Clear();  // 清屏
+  hyper_show_time = HAL_GetTick(); // 初始化hyper显示计时
+}
+
+// 清屏函数
+void OLED_Clear(void) {
+  uint8_t page, col;
+  for (page = 0; page < 8; page++) {
+    OLED_WriteCommand(0xB0 + page);
+    OLED_WriteCommand(0x00);
+    OLED_WriteCommand(0x10);
+    for (col = 0; col < 128; col++) {
+      OLED_WriteData(0x00);
+    }
+  }
+}
+
+// 显示单个8x16字符（仅用于hyper）
+void OLED_ShowChar(uint8_t x, uint8_t y, uint8_t ch) {
+  uint8_t i;
+  if (x >= 128 || y >= 7) return;
+  uint8_t idx = get_hyper_index(ch);
+  if (idx >= HYPER_LEN) return;
+
+  // 写入字符上半部分（0-7行）
+  OLED_WriteCommand(0xB0 + y);
+  OLED_WriteCommand(0x00 + (x & 0x0F));
+  OLED_WriteCommand(0x10 + (x >> 4));
+  for (i = 0; i < 8; i++) {
+    OLED_WriteData(ASCII_8x16[idx][i]);
+  }
+
+  // 写入字符下半部分（8-15行）
+  OLED_WriteCommand(0xB0 + y + 1);
+  OLED_WriteCommand(0x00 + (x & 0x0F));
+  OLED_WriteCommand(0x10 + (x >> 4));
+  for (i = 8; i < 16; i++) {
+    OLED_WriteData(ASCII_8x16[idx][i]);
+  }
+}
+
+// 显示hyper字符串（8x16，居中）
+static void OLED_ShowHyper(void) {
+    uint8_t x = GetCenterX(HYPER_LEN, 8); // hyper共5个字符，每个8像素宽
+    // 垂直居中（y=2，适配64行屏：2*8=16行起始，16+16=32行结束，居中64行屏）
+    OLED_ShowChar(x + 0*8, 2, 'h');
+    OLED_ShowChar(x + 1*8, 2, 'y');
+    OLED_ShowChar(x + 2*8, 2, 'p');
+    OLED_ShowChar(x + 3*8, 2, 'e');
+    OLED_ShowChar(x + 4*8, 2, 'r');
+}
+
+// 显示10x24点阵的faze up（支持任意Y坐标滚动）
+static void OLED_ShowFaZeUp(int16_t y) {
+    if (y + CHAR_HEIGHT < 0) return;  // 完全超出顶部
+    if (y >= SCREEN_HEIGHT) return;   // 完全超出底部
+
+    uint8_t base_x = GetCenterX(FAZE_UP_LEN, CHAR_WIDTH); // faze up居中X坐标
+    uint8_t char_x = base_x;
+
+    // 逐字符绘制10x24点阵
+    for (uint8_t char_idx = 0; char_idx < FAZE_UP_LEN; char_idx++) {
+        // 逐行绘制当前字符（24行，分3个OLED页：0-7行=页0，8-15行=页1，16-23行=页2）
+        for (uint8_t row = 0; row < CHAR_HEIGHT; row++) {
+            int16_t screen_row = y + row; // 字符行对应屏幕行
+            if (screen_row < 0 || screen_row >= SCREEN_HEIGHT) continue; // 超出屏幕跳过
+
+            uint8_t page = screen_row / 8;    // OLED页地址（0-7）
+            uint8_t page_offset = screen_row % 8; // 页内偏移行（0-7）
+
+            // 设置OLED地址（页+列）
+            OLED_WriteCommand(0xB0 + page);
+            OLED_WriteCommand(0x00 + ((char_x) & 0x0F)); // 列地址低4位
+            OLED_WriteCommand(0x10 + ((char_x) >> 4));   // 列地址高4位
+
+            // 取当前字符当前行的点阵数据（10x24点阵，每行1字节）
+            uint8_t dot_data = FAZE_UP_10x24[char_idx][row];
+
+            // 处理10像素宽度：分两次写入（OLED列地址自动递增）
+            OLED_WriteData(dot_data); // 第1-8列
+            if (page_offset == 0) {   // 仅在页起始行补充第9-10列
+                OLED_WriteData(dot_data >> 8 & 0x03); // 第9-10列（高2位）
+            }
+        }
+        char_x += CHAR_WIDTH; // 下一个字符偏移10像素
+    }
+}
+
+// 主显示逻辑（对外暴露）
+void OLED_ShowMainLogic(void) {
+    if (current_state == SHOW_HYPER) {
+        // 显示hyper并计时
+        OLED_Clear();
+        OLED_ShowHyper();
+
+        // 检查是否达到显示时长
+        if (HAL_GetTick() - hyper_show_time >= HYPER_DURATION) {
+            current_state = SCROLL_FAZE_UP;
+            scroll_y = SCREEN_HEIGHT;  // 重置faze up滚动起始位置（屏幕底部）
+        }
+        HAL_Delay(100);
+    } else {
+        // 滚动显示faze up
+        OLED_Clear();
+        OLED_ShowFaZeUp(scroll_y);
+        scroll_y--;  // 向上移动1像素
+
+        // 完全滚动出顶部后，从底部重新开始
+        if (scroll_y < -CHAR_HEIGHT) {
+            scroll_y = SCREEN_HEIGHT;
+        }
+        HAL_Delay(30);  // 滚动速度（适配10x24点阵，30ms/像素）
+    }
+}

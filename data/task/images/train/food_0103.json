@@ -1,0 +1,127 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "food",
+      "score": 0.9078400135040283,
+      "points": [
+        [
+          894.3321533203125,
+          618.070068359375
+        ],
+        [
+          1368.3714599609375,
+          618.070068359375
+        ],
+        [
+          1368.3714599609375,
+          964.640380859375
+        ],
+        [
+          894.3321533203125,
+          964.640380859375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.9050661325454712,
+      "points": [
+        [
+          1187.694580078125,
+          260.68927001953125
+        ],
+        [
+          1349.5478515625,
+          260.68927001953125
+        ],
+        [
+          1349.5478515625,
+          409.81317138671875
+        ],
+        [
+          1187.694580078125,
+          409.81317138671875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8988509178161621,
+      "points": [
+        [
+          1372.220947265625,
+          191.90606689453125
+        ],
+        [
+          1520.8583984375,
+          191.90606689453125
+        ],
+        [
+          1520.8583984375,
+          325.60321044921875
+        ],
+        [
+          1372.220947265625,
+          325.60321044921875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.7482244372367859,
+      "points": [
+        [
+          897.4480590820312,
+          522.5703125
+        ],
+        [
+          991.4252319335938,
+          522.5703125
+        ],
+        [
+          991.4252319335938,
+          619.5556640625
+        ],
+        [
+          897.4480590820312,
+          619.5556640625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "food_0103.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

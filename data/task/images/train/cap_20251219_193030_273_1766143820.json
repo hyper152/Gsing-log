@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "tool",
+      "score": 0.8828915953636169,
+      "points": [
+        [
+          0.2286224365234375,
+          148.594970703125
+        ],
+        [
+          224.2358856201172,
+          148.594970703125
+        ],
+        [
+          224.2358856201172,
+          531.8531494140625
+        ],
+        [
+          0.2286224365234375,
+          531.8531494140625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "device",
+      "score": 0.864707887172699,
+      "points": [
+        [
+          0.0,
+          579.8965454101562
+        ],
+        [
+          269.7281799316406,
+          579.8965454101562
+        ],
+        [
+          269.7281799316406,
+          965.1279296875
+        ],
+        [
+          0.0,
+          965.1279296875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "device",
+      "score": 0.4390352964401245,
+      "points": [
+        [
+          353.482177734375,
+          564.0601806640625
+        ],
+        [
+          518.8410034179688,
+          564.0601806640625
+        ],
+        [
+          518.8410034179688,
+          890.8314208984375
+        ],
+        [
+          353.482177734375,
+          890.8314208984375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "cap_20251219_193030_273_1766143820.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

@@ -1,0 +1,226 @@
+#include "oled.h"
+#include <string.h>
+#include "main.h"
+
+// 全局I2C句柄
+static I2C_HandleTypeDef *oled_hi2c;
+
+// 屏幕/字符参数（8x16点阵适配）
+#define SCREEN_WIDTH  128   // OLED屏幕宽度
+#define SCREEN_HEIGHT 64    // OLED屏幕高度
+#define CHAR_WIDTH    8     // 字符宽度（8像素）
+#define CHAR_HEIGHT   16    // 字符高度（16像素）
+#define FAZE_UP_LEN   7     // "FaZe up"字符数（F/a/Z/e/空格/u/p）
+#define HYPER_LEN     5     // "hyper"字符数
+#define ROLL_STEP     1     // 滚动步长（1像素）
+#define ROLL_SPEED    20    // 滚动速度（ms/步）
+
+// 状态枚举：0-显示hyper，1-滚动显示FaZe up
+typedef enum {
+    SHOW_HYPER,
+    SCROLL_FAZE_UP
+} DisplayState;
+
+// 静态全局变量（驱动层内部使用）
+static DisplayState current_state = SHOW_HYPER;
+static uint32_t hyper_show_time = 0;
+static const uint32_t HYPER_DURATION = 2000; // hyper显示时长(ms)
+static int16_t scroll_x = SCREEN_WIDTH;     // 水平滚动X坐标（从屏幕右侧开始）
+static const uint8_t *FAZE_UP_FULL;         // 连续滚动的FaZe up点阵数据
+
+// 内部函数声明
+static void OLED_WriteCommand(uint8_t cmd);
+static void OLED_WriteData(uint8_t data);
+static uint8_t GetCenterX(uint8_t char_count);
+static void OLED_DrawContinuousFaZeUp(int16_t start_x);
+
+// ====================== 点阵数据（8x16，新宋体12号） ======================
+// hyper字符点阵（8x16）
+const uint8_t HYPER_8x16[HYPER_LEN][16] = {
+    // h (索引0)
+    [0] = {0x00,0x80,0x00,0x04,0x84,0xFC,0x04,0x04,0x00,0x01,0x01,0x01,0x00,0x01,0x01,0x01},
+    // y (索引1)
+    [1] = {0x00,0xE8,0x24,0x24,0x24,0x24,0xF8,0x00,0x00,0x00,0x01,0x01,0x01,0x01,0x00,0x00},
+    // p (索引2)
+    [2] = {0x00,0x70,0x88,0x04,0x04,0x89,0xFF,0x01,0x00,0x00,0x00,0x01,0x01,0x00,0x01,0x01},
+    // e (索引3)
+    [3] = {0x00,0x80,0x60,0x18,0x1E,0x61,0x81,0x00,0x01,0x01,0x01,0x00,0x00,0x01,0x01,0x01},
+    // r (索引4)
+    [4] = {0x04,0xFC,0x04,0x00,0x00,0x84,0xFC,0x04,0x00,0x00,0x01,0x01,0x01,0x00,0x0F,0x08}
+};
+
+// FaZe up字符点阵（8x16，新宋体12号，按F/a/Z/e/空格/u/p顺序）
+const uint8_t FAZE_UP_8x16[FAZE_UP_LEN][16] = {
+    // F
+    {0x00,0x70,0x88,0x04,0x04,0x89,0xFF,0x01,0x00,0x00,0x00,0x01,0x01,0x00,0x01,0x01},
+    // a
+    {0x04,0xFC,0x08,0x04,0x04,0x04,0xF8,0x00,0x00,0x01,0x01,0x00,0x00,0x00,0x01,0x01},
+    // Z（补充有效点阵，避免空白）
+    {0xFF,0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80,0x00,0x00,0x00,0x00,0x00,0x00,0xFF},
+    // e
+    {0x00,0xE8,0x24,0x24,0x24,0x24,0xF8,0x00,0x00,0x00,0x01,0x01,0x01,0x01,0x00,0x00},
+    // 空格
+    {0x00,0x18,0x04,0x04,0x84,0x64,0x1C,0x04,0x00,0x10,0x1C,0x13,0x10,0x10,0x10,0x08},
+    // u
+    {0x00,0x04,0xFC,0x48,0x24,0x24,0x98,0x00,0x00,0x00,0x00,0x01,0x01,0x01,0x00,0x00},
+    // p
+    {0x00,0x00,0x00,0xC0,0x00,0x04,0xFC,0x04,0x00,0x08,0x10,0x17,0x11,0x11,0x1F,0x10}
+};
+
+// 拼接连续滚动的FaZe up数据（FaZe up + FaZe up，实现无间断）
+static const uint8_t FAZE_UP_CONTINUOUS[FAZE_UP_LEN*2][16] = {
+    // 第一组FaZe up
+    FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+    FAZE_UP_8x16[4], FAZE_UP_8x16[5], FAZE_UP_8x16[6],
+    // 第二组FaZe up（实现连续）
+    FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+    FAZE_UP_8x16[4], FAZE_UP_8x16[5], FAZE_UP_8x16[6]
+};
+
+// ====================== 内部工具函数 ======================
+// 计算居中X坐标（8像素宽字符）
+static uint8_t GetCenterX(uint8_t char_count) {
+    return (SCREEN_WIDTH - char_count * CHAR_WIDTH) / 2;
+}
+
+// ====================== 底层通信函数 ======================
+// 发送OLED命令（I2C超时1秒）
+static void OLED_WriteCommand(uint8_t cmd) {
+  HAL_I2C_Mem_Write(oled_hi2c, OLED_ADDR, 0x00, I2C_MEMADD_SIZE_8BIT, &cmd, 1, 1000);
+}
+
+// 发送OLED数据（I2C超时1秒）
+static void OLED_WriteData(uint8_t data) {
+  HAL_I2C_Mem_Write(oled_hi2c, OLED_ADDR, 0x40, I2C_MEMADD_SIZE_8BIT, &data, 1, 1000);
+}
+
+// ====================== 核心显示函数 ======================
+// OLED初始化（适配8x16点阵）
+void OLED_Init(I2C_HandleTypeDef *hi2c) {
+  oled_hi2c = hi2c;
+  HAL_Delay(300);  // 延长上电延时，适配所有OLED屏
+
+  // OLED初始化指令集
+  OLED_WriteCommand(0xAE); // 关闭显示
+  OLED_WriteCommand(0x20); // 设置内存寻址模式：页寻址
+  OLED_WriteCommand(0x02);
+  OLED_WriteCommand(0x00); // 列地址低4位
+  OLED_WriteCommand(0x10); // 列地址高4位
+  OLED_WriteCommand(0x40); // 设置起始行
+  OLED_WriteCommand(0xA0); // 段重映射（匹配点阵方向）
+  OLED_WriteCommand(0xC0); // COM扫描方向（匹配点阵方向）
+  OLED_WriteCommand(0xA6); // 正常显示
+  OLED_WriteCommand(0xA8); // 多路复用率（64行）
+  OLED_WriteCommand(0x3F);
+  OLED_WriteCommand(0xD3); // 显示偏移（无偏移）
+  OLED_WriteCommand(0x00);
+  OLED_WriteCommand(0xD5); // 时钟分频
+  OLED_WriteCommand(0x80);
+  OLED_WriteCommand(0xD9); // 预充电周期
+  OLED_WriteCommand(0xF1);
+  OLED_WriteCommand(0xDA); // COM引脚配置
+  OLED_WriteCommand(0x12);
+  OLED_WriteCommand(0xDB); // VCOMH电平
+  OLED_WriteCommand(0x40);
+  OLED_WriteCommand(0x8D); // 开启电荷泵
+  OLED_WriteCommand(0x14);
+  OLED_WriteCommand(0xAF); // 开启显示
+
+  OLED_Clear();  // 清屏
+  hyper_show_time = HAL_GetTick(); // 初始化hyper显示计时
+  FAZE_UP_FULL = (const uint8_t *)FAZE_UP_CONTINUOUS; // 初始化连续滚动数据
+}
+
+// 清屏函数
+void OLED_Clear(void) {
+  uint8_t page, col;
+  for (page = 0; page < 8; page++) {
+    OLED_WriteCommand(0xB0 + page);
+    OLED_WriteCommand(0x00);
+    OLED_WriteCommand(0x10);
+    for (col = 0; col < 128; col++) {
+      OLED_WriteData(0x00);
+    }
+  }
+}
+
+// 显示单个8x16字符（通用）
+void OLED_ShowChar(uint8_t x, uint8_t y, const uint8_t *char_data) {
+  uint8_t i;
+  if (x >= 128 || y >= 7) return; // 边界检查（y+1 < 8）
+
+  // 写入字符上半部分（0-7行，y页）
+  OLED_WriteCommand(0xB0 + y);
+  OLED_WriteCommand(0x00 + (x & 0x0F));
+  OLED_WriteCommand(0x10 + (x >> 4));
+  for (i = 0; i < 8; i++) {
+    OLED_WriteData(char_data[i]);
+  }
+
+  // 写入字符下半部分（8-15行，y+1页）
+  OLED_WriteCommand(0xB0 + y + 1);
+  OLED_WriteCommand(0x00 + (x & 0x0F));
+  OLED_WriteCommand(0x10 + (x >> 4));
+  for (i = 8; i < 16; i++) {
+    OLED_WriteData(char_data[i]);
+  }
+}
+
+// 显示hyper字符串（8x16，居中）
+static void OLED_ShowHyper(void) {
+    uint8_t x = GetCenterX(HYPER_LEN); // hyper居中X坐标
+    uint8_t y = 2; // 垂直居中（y=2，2*8=16行起始，适配64行屏）
+
+    OLED_ShowChar(x + 0*8, y, HYPER_8x16[0]); // h
+    OLED_ShowChar(x + 1*8, y, HYPER_8x16[1]); // y
+    OLED_ShowChar(x + 2*8, y, HYPER_8x16[2]); // p
+    OLED_ShowChar(x + 3*8, y, HYPER_8x16[3]); // e
+    OLED_ShowChar(x + 4*8, y, HYPER_8x16[4]); // r
+}
+
+// 绘制连续滚动的FaZe up（水平滚动，一个接一个）
+static void OLED_DrawContinuousFaZeUp(int16_t start_x) {
+    uint8_t base_y = 2; // 垂直居中（y=2）
+    int16_t draw_x = start_x;
+    uint8_t char_idx = 0;
+
+    // 绘制连续的FaZe up，直到超出屏幕左侧
+    while (draw_x + CHAR_WIDTH > 0 && char_idx < FAZE_UP_LEN*2) {
+        if (draw_x < SCREEN_WIDTH) {
+            // 仅绘制在屏幕可见区域内的字符
+            OLED_ShowChar(draw_x, base_y, &FAZE_UP_CONTINUOUS[char_idx][0]);
+        }
+        draw_x -= CHAR_WIDTH; // 下一个字符左移8像素
+        char_idx++;
+    }
+}
+
+// 主显示逻辑（对外暴露）
+void OLED_ShowMainLogic(void) {
+    if (current_state == SHOW_HYPER) {
+        // 显示hyper并计时
+        OLED_Clear();
+        OLED_ShowHyper();
+
+        // 检查是否达到显示时长
+        if (HAL_GetTick() - hyper_show_time >= HYPER_DURATION) {
+            current_state = SCROLL_FAZE_UP;
+            scroll_x = SCREEN_WIDTH;  // 初始化滚动位置（屏幕右侧）
+        }
+        HAL_Delay(100);
+    } else {
+        // 连续滚动显示FaZe up
+        OLED_Clear();
+        OLED_DrawContinuousFaZeUp(scroll_x);
+
+        // 更新滚动坐标（向左滚动）
+        scroll_x -= ROLL_STEP;
+
+        // 重置滚动（当第一组FaZe up完全滚出左侧，回到初始位置）
+        if (scroll_x < -FAZE_UP_LEN*CHAR_WIDTH) {
+            scroll_x = SCREEN_WIDTH;
+        }
+
+        HAL_Delay(ROLL_SPEED);  // 滚动速度控制
+    }
+}

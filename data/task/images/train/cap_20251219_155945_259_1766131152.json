@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "device",
+      "score": 0.8811904788017273,
+      "points": [
+        [
+          673.94140625,
+          153.5509033203125
+        ],
+        [
+          879.074462890625,
+          153.5509033203125
+        ],
+        [
+          879.074462890625,
+          431.6988525390625
+        ],
+        [
+          673.94140625,
+          431.6988525390625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.8556152582168579,
+      "points": [
+        [
+          613.6697998046875,
+          752.968017578125
+        ],
+        [
+          810.0604248046875,
+          752.968017578125
+        ],
+        [
+          810.0604248046875,
+          997.594482421875
+        ],
+        [
+          613.6697998046875,
+          997.594482421875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8259154558181763,
+      "points": [
+        [
+          641.1314086914062,
+          463.4752197265625
+        ],
+        [
+          841.1022338867188,
+          463.4752197265625
+        ],
+        [
+          841.1022338867188,
+          693.8441162109375
+        ],
+        [
+          641.1314086914062,
+          693.8441162109375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "cap_20251219_155945_259_1766131152.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

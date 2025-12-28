@@ -1,0 +1,69 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "food",
+      "score": 0.9069685935974121,
+      "points": [
+        [
+          0.3879241943359375,
+          6.61151123046875
+        ],
+        [
+          144.385498046875,
+          6.61151123046875
+        ],
+        [
+          144.385498046875,
+          155.12548828125
+        ],
+        [
+          0.3879241943359375,
+          155.12548828125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8639598488807678,
+      "points": [
+        [
+          23.633712768554688,
+          171.587158203125
+        ],
+        [
+          176.583740234375,
+          171.587158203125
+        ],
+        [
+          176.583740234375,
+          316.304443359375
+        ],
+        [
+          23.633712768554688,
+          316.304443359375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "medicine2_0052.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

@@ -1,0 +1,134 @@
+#include "oled.h"
+#include <string.h>
+
+// 全局I2C句柄
+static I2C_HandleTypeDef *oled_hi2c;
+
+// 内部函数声明
+static void OLED_WriteCommand(uint8_t cmd);
+static void OLED_WriteData(uint8_t data);
+
+// 8x16点阵库（完全使用最新取模数据）
+const uint8_t ASCII_8x16[5][16] = {
+    // h (索引0)
+    [0] = {0x00,0x80,0x00,0x04,0x84,0xFC,0x04,0x04,0x00,0x01,0x01,0x01,0x00,0x01,0x01,0x01},
+    // y (索引1)
+    [1] = {0x00,0xE8,0x24,0x24,0x24,0x24,0xF8,0x00,0x00,0x00,0x01,0x01,0x01,0x01,0x00,0x00},
+    // p (索引2)
+    [2] = {0x00,0x70,0x88,0x04,0x04,0x89,0xFF,0x01,0x00,0x00,0x00,0x01,0x01,0x00,0x01,0x01},
+    // e (索引3)
+    [3] = {0x00,0x80,0x60,0x18,0x1E,0x61,0x81,0x00,0x01,0x01,0x01,0x00,0x00,0x01,0x01,0x01},
+    // r (索引4)
+    [4] = {0x04,0xFC,0x04,0x00,0x00,0x84,0xFC,0x04,0x00,0x00,0x01,0x01,0x01,0x00,0x0F,0x08}
+};
+
+// 字符索引映射（精准匹配hyper）
+uint8_t get_index(uint8_t ch) {
+  switch(ch) {
+    case 'h': return 0;
+    case 'y': return 1;
+    case 'p': return 2;
+    case 'e': return 3;
+    case 'r': return 4;
+    default: return 0; // 未知字符显示h
+  }
+}
+
+// 发送命令（I2C超时1秒，极致稳定）
+static void OLED_WriteCommand(uint8_t cmd) {
+  HAL_I2C_Mem_Write(oled_hi2c, OLED_ADDR, 0x00, I2C_MEMADD_SIZE_8BIT, &cmd, 1, 1000);
+}
+
+// 发送数据（I2C超时1秒）
+static void OLED_WriteData(uint8_t data) {
+  HAL_I2C_Mem_Write(oled_hi2c, OLED_ADDR, 0x40, I2C_MEMADD_SIZE_8BIT, &data, 1, 1000);
+}
+
+// OLED初始化（终极适配版）
+void OLED_Init(I2C_HandleTypeDef *hi2c) {
+  oled_hi2c = hi2c;
+  HAL_Delay(300);  // 超长上电延时，适配所有OLED屏
+
+  // 核心初始化指令（逐行验证，适配取模方向）
+  OLED_WriteCommand(0xAE);  // 关闭显示
+  OLED_WriteCommand(0x20);  // 内存寻址模式
+  OLED_WriteCommand(0x02);  // 页寻址（必选）
+  OLED_WriteCommand(0x00);  // 列地址低4位
+  OLED_WriteCommand(0x10);  // 列地址高4位
+  OLED_WriteCommand(0x40);  // 起始行：0行
+  OLED_WriteCommand(0xB0);  // 初始页：0页
+
+  // 显示方向终极适配（和取模工具1:1匹配）
+  OLED_WriteCommand(0xA1);  // 段重映射（左右反转，适配本次点阵）
+  OLED_WriteCommand(0xC8);  // COM扫描方向（上下反转，适配本次点阵）
+  OLED_WriteCommand(0xA6);  // 正常显示（阴码）
+
+  // 硬件参数配置（0.96寸屏标准）
+  OLED_WriteCommand(0xA8);  // 多路复用率
+  OLED_WriteCommand(0x3F);  // 64行
+  OLED_WriteCommand(0xD3);  // 显示偏移
+  OLED_WriteCommand(0x00);
+  OLED_WriteCommand(0xD5);  // 时钟分频
+  OLED_WriteCommand(0x80);
+  OLED_WriteCommand(0xD9);  // 预充电周期
+  OLED_WriteCommand(0xF1);
+  OLED_WriteCommand(0xDA);  // COM引脚
+  OLED_WriteCommand(0x12);
+  OLED_WriteCommand(0xDB);  // VCOMH
+  OLED_WriteCommand(0x40);
+  OLED_WriteCommand(0x8D);  // 开启电荷泵
+  OLED_WriteCommand(0x14);
+  OLED_WriteCommand(0xAF);  // 开启显示
+
+  OLED_Clear();  // 清屏
+}
+
+// 清屏函数（彻底清空显存）
+void OLED_Clear(void) {
+  uint8_t i, j;
+  for (i = 0; i < 8; i++) {
+    OLED_WriteCommand(0xB0 + i);
+    OLED_WriteCommand(0x00);
+    OLED_WriteCommand(0x10);
+    for (j = 0; j < 128; j++) {
+      OLED_WriteData(0x00);
+    }
+  }
+}
+
+// 显示单个字符（无任何冗余逻辑）
+void OLED_ShowChar(uint8_t x, uint8_t y, uint8_t ch) {
+  uint8_t i;
+  // 严格边界检查
+  if (x >= 128 || y >= 7 || (y+1) >= 8) return;
+  uint8_t index = get_index(ch);
+  if (index >= 5) return;
+
+  // 设置上半部分坐标（y页）
+  OLED_WriteCommand(0xB0 + y);
+  OLED_WriteCommand(0x00 + (x & 0x0F));
+  OLED_WriteCommand(0x10 + ((x >> 4) & 0x0F));
+  // 写入上8字节
+  for (i = 0; i < 8; i++) {
+    OLED_WriteData(ASCII_8x16[index][i]);
+  }
+
+  // 设置下半部分坐标（y+1页）
+  OLED_WriteCommand(0xB0 + y + 1);
+  OLED_WriteCommand(0x00 + (x & 0x0F));
+  OLED_WriteCommand(0x10 + ((x >> 4) & 0x0F));
+  // 写入下8字节
+  for (i = 8; i < 16; i++) {
+    OLED_WriteData(ASCII_8x16[index][i]);
+  }
+}
+
+// 显示字符串（极简逻辑）
+void OLED_ShowString(uint8_t x, uint8_t y, char *str) {
+  uint8_t i = 0;
+  while (str[i] != '\0') {
+    OLED_ShowChar(x + i * 8, y, str[i]);
+    i++;
+    if (x + i * 8 >= 128) break;
+  }
+}

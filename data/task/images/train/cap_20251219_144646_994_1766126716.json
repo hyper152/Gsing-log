@@ -1,0 +1,40 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "tool",
+      "score": 0.8385889530181885,
+      "points": [
+        [
+          658.9989013671875,
+          224.668212890625
+        ],
+        [
+          1060.2291259765625,
+          224.668212890625
+        ],
+        [
+          1060.2291259765625,
+          677.30908203125
+        ],
+        [
+          658.9989013671875,
+          677.30908203125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "cap_20251219_144646_994_1766126716.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

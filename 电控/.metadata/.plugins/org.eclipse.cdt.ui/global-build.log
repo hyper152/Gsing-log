@@ -1,0 +1,143 @@
+16:06:22 **** Incremental Build of configuration Debug for project oled ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/oled.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/oled.d" -MT"Core/Src/oled.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/oled.o"
+../Core/Src/oled.c: In function 'OLED_ShowFaZeUp':
+../Core/Src/oled.c:172:12: warning: unused variable 'row_offset' [-Wunused-variable]
+  172 |     int8_t row_offset = y % 8;               // 页内偏移行
+      |            ^~~~~~~~~~
+arm-none-eabi-gcc -o "oled.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\a\Desktop\.cqu\bot\code\oled\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="oled.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: oled.elf
+ 
+arm-none-eabi-size  oled.elf 
+arm-none-eabi-objdump -h -S oled.elf  > "oled.list"
+   text	   data	    bss	    dec	    hex	filename
+   8636	     16	   1664	  10316	   284c	oled.elf
+Finished building: default.size.stdout
+ 
+Finished building: oled.list
+ 
+16:06:26 **** Incremental Build of configuration Debug for project oled ****
+make -j24 all 
+arm-none-eabi-size  oled.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8636	     16	   1664	  10316	   284c	oled.elf
+Finished building: default.size.stdout
+ 
+16:09:20 **** Incremental Build of configuration Debug for project oled ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/oled.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/oled.d" -MT"Core/Src/oled.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/oled.o"
+../Core/Src/oled.c:73:5: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   73 |     FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+      |     ^~~~~~~~~~~~
+../Core/Src/oled.c:73:5: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][0]')
+../Core/Src/oled.c:73:5: error: initializer element is not computable at load time
+../Core/Src/oled.c:73:5: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][0]')
+../Core/Src/oled.c:73:22: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   73 |     FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+      |                      ^~~~~~~~~~~~
+../Core/Src/oled.c:73:22: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][1]')
+../Core/Src/oled.c:73:22: error: initializer element is not computable at load time
+../Core/Src/oled.c:73:22: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][1]')
+../Core/Src/oled.c:73:39: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   73 |     FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+      |                                       ^~~~~~~~~~~~
+../Core/Src/oled.c:73:39: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][2]')
+../Core/Src/oled.c:73:39: error: initializer element is not computable at load time
+../Core/Src/oled.c:73:39: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][2]')
+../Core/Src/oled.c:73:56: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   73 |     FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+      |                                                        ^~~~~~~~~~~~
+../Core/Src/oled.c:73:56: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][3]')
+../Core/Src/oled.c:73:56: error: initializer element is not computable at load time
+../Core/Src/oled.c:73:56: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][3]')
+../Core/Src/oled.c:74:5: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   74 |     FAZE_UP_8x16[4], FAZE_UP_8x16[5], FAZE_UP_8x16[6],
+      |     ^~~~~~~~~~~~
+../Core/Src/oled.c:74:5: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][4]')
+../Core/Src/oled.c:74:5: error: initializer element is not computable at load time
+../Core/Src/oled.c:74:5: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][4]')
+../Core/Src/oled.c:74:22: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   74 |     FAZE_UP_8x16[4], FAZE_UP_8x16[5], FAZE_UP_8x16[6],
+      |                      ^~~~~~~~~~~~
+../Core/Src/oled.c:74:22: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][5]')
+../Core/Src/oled.c:74:22: error: initializer element is not computable at load time
+../Core/Src/oled.c:74:22: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][5]')
+../Core/Src/oled.c:74:39: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   74 |     FAZE_UP_8x16[4], FAZE_UP_8x16[5], FAZE_UP_8x16[6],
+      |                                       ^~~~~~~~~~~~
+../Core/Src/oled.c:74:39: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][6]')
+../Core/Src/oled.c:74:39: error: initializer element is not computable at load time
+../Core/Src/oled.c:74:39: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][6]')
+../Core/Src/oled.c:76:5: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   76 |     FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+      |     ^~~~~~~~~~~~
+../Core/Src/oled.c:76:5: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][7]')
+../Core/Src/oled.c:76:5: error: initializer element is not computable at load time
+../Core/Src/oled.c:76:5: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][7]')
+../Core/Src/oled.c:76:22: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   76 |     FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+      |                      ^~~~~~~~~~~~
+../Core/Src/oled.c:76:22: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][8]')
+../Core/Src/oled.c:76:22: error: initializer element is not computable at load time
+../Core/Src/oled.c:76:22: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][8]')
+../Core/Src/oled.c:76:39: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   76 |     FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+      |                                       ^~~~~~~~~~~~
+../Core/Src/oled.c:76:39: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][9]')
+../Core/Src/oled.c:76:39: error: initializer element is not computable at load time
+../Core/Src/oled.c:76:39: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][9]')
+../Core/Src/oled.c:76:56: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   76 |     FAZE_UP_8x16[0], FAZE_UP_8x16[1], FAZE_UP_8x16[2], FAZE_UP_8x16[3],
+      |                                                        ^~~~~~~~~~~~
+../Core/Src/oled.c:76:56: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][10]')
+../Core/Src/oled.c:76:56: error: initializer element is not computable at load time
+../Core/Src/oled.c:76:56: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][10]')
+../Core/Src/oled.c:77:5: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   77 |     FAZE_UP_8x16[4], FAZE_UP_8x16[5], FAZE_UP_8x16[6]
+      |     ^~~~~~~~~~~~
+../Core/Src/oled.c:77:5: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][11]')
+../Core/Src/oled.c:77:5: error: initializer element is not computable at load time
+../Core/Src/oled.c:77:5: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][11]')
+../Core/Src/oled.c:77:22: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   77 |     FAZE_UP_8x16[4], FAZE_UP_8x16[5], FAZE_UP_8x16[6]
+      |                      ^~~~~~~~~~~~
+../Core/Src/oled.c:77:22: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][12]')
+../Core/Src/oled.c:77:22: error: initializer element is not computable at load time
+../Core/Src/oled.c:77:22: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][12]')
+../Core/Src/oled.c:77:39: warning: initialization of 'unsigned char' from 'const uint8_t *' {aka 'const unsigned char *'} makes integer from pointer without a cast [-Wint-conversion]
+   77 |     FAZE_UP_8x16[4], FAZE_UP_8x16[5], FAZE_UP_8x16[6]
+      |                                       ^~~~~~~~~~~~
+../Core/Src/oled.c:77:39: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][13]')
+../Core/Src/oled.c:77:39: error: initializer element is not computable at load time
+../Core/Src/oled.c:77:39: note: (near initialization for 'FAZE_UP_CONTINUOUS[0][13]')
+make: *** [Core/Src/subdir.mk:37: Core/Src/oled.o] Error 1
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+16:13:42 **** Incremental Build of configuration Debug for project oled ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/oled.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/oled.d" -MT"Core/Src/oled.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/oled.o"
+arm-none-eabi-gcc -o "oled.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\a\Desktop\.cqu\bot\code\oled\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="oled.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: oled.elf
+ 
+arm-none-eabi-size  oled.elf 
+arm-none-eabi-objdump -h -S oled.elf  > "oled.list"
+   text	   data	    bss	    dec	    hex	filename
+   8508	     16	   1664	  10188	   27cc	oled.elf
+Finished building: default.size.stdout
+ 
+Finished building: oled.list
+ 
+16:16:32 **** Incremental Build of configuration Debug for project oled ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/oled.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/oled.d" -MT"Core/Src/oled.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/oled.o"
+arm-none-eabi-gcc -o "oled.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\a\Desktop\.cqu\bot\code\oled\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="oled.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: oled.elf
+ 
+arm-none-eabi-size  oled.elf 
+arm-none-eabi-objdump -h -S oled.elf  > "oled.list"
+   text	   data	    bss	    dec	    hex	filename
+  12788	    104	   2000	  14892	   3a2c	oled.elf
+Finished building: default.size.stdout
+ 
+Finished building: oled.list
+ 

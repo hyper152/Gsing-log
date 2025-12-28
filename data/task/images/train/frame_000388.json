@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "food",
+      "score": 0.8891525864601135,
+      "points": [
+        [
+          1044.2535807291667,
+          359.5120442708333
+        ],
+        [
+          1150.65185546875,
+          359.5120442708333
+        ],
+        [
+          1150.65185546875,
+          479.9534505208333
+        ],
+        [
+          1044.2535807291667,
+          479.9534505208333
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.7526964545249939,
+      "points": [
+        [
+          1316.6929524739583,
+          533.0380045572916
+        ],
+        [
+          1414.1767578125,
+          533.0380045572916
+        ],
+        [
+          1414.1767578125,
+          646.0440266927084
+        ],
+        [
+          1316.6929524739583,
+          646.0440266927084
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.5852018594741821,
+      "points": [
+        [
+          898.5475260416666,
+          467.6321614583333
+        ],
+        [
+          1004.0423177083334,
+          467.6321614583333
+        ],
+        [
+          1004.0423177083334,
+          605.0169270833334
+        ],
+        [
+          898.5475260416666,
+          605.0169270833334
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "frame_000388.jpg",
+  "imageData": null,
+  "imageHeight": 1440,
+  "imageWidth": 2560,
+  "description": ""
+}

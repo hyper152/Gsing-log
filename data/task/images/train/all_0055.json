@@ -1,0 +1,127 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "food",
+      "score": 0.899418830871582,
+      "points": [
+        [
+          575.406494140625,
+          414.2032470703125
+        ],
+        [
+          743.994384765625,
+          414.2032470703125
+        ],
+        [
+          743.994384765625,
+          527.6285400390625
+        ],
+        [
+          575.406494140625,
+          527.6285400390625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8945098519325256,
+      "points": [
+        [
+          364.9579772949219,
+          685.1962890625
+        ],
+        [
+          682.10205078125,
+          685.1962890625
+        ],
+        [
+          682.10205078125,
+          950.56298828125
+        ],
+        [
+          364.9579772949219,
+          950.56298828125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.8929764032363892,
+      "points": [
+        [
+          1289.1883544921875,
+          701.8408203125
+        ],
+        [
+          1499.0574951171875,
+          701.8408203125
+        ],
+        [
+          1499.0574951171875,
+          929.77880859375
+        ],
+        [
+          1289.1883544921875,
+          929.77880859375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "device",
+      "score": 0.847102165222168,
+      "points": [
+        [
+          1005.968017578125,
+          437.857421875
+        ],
+        [
+          1190.47509765625,
+          437.857421875
+        ],
+        [
+          1190.47509765625,
+          629.525634765625
+        ],
+        [
+          1005.968017578125,
+          629.525634765625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "all_0055.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

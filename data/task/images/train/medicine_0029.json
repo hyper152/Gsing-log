@@ -1,0 +1,40 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "remedy",
+      "score": 0.8697364330291748,
+      "points": [
+        [
+          772.575927734375,
+          392.017578125
+        ],
+        [
+          1048.844970703125,
+          392.017578125
+        ],
+        [
+          1048.844970703125,
+          598.962158203125
+        ],
+        [
+          772.575927734375,
+          598.962158203125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "medicine_0029.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

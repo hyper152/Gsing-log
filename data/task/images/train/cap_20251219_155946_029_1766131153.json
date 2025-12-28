@@ -1,0 +1,98 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "device",
+      "score": 0.8704368472099304,
+      "points": [
+        [
+          646.6280517578125,
+          36.3699951171875
+        ],
+        [
+          854.7996826171875,
+          36.3699951171875
+        ],
+        [
+          854.7996826171875,
+          305.6617431640625
+        ],
+        [
+          646.6280517578125,
+          305.6617431640625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.8570194840431213,
+      "points": [
+        [
+          591.021484375,
+          623.819580078125
+        ],
+        [
+          786.1129150390625,
+          623.819580078125
+        ],
+        [
+          786.1129150390625,
+          856.316650390625
+        ],
+        [
+          591.021484375,
+          856.316650390625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8317117094993591,
+      "points": [
+        [
+          616.70068359375,
+          336.36309814453125
+        ],
+        [
+          816.99853515625,
+          336.36309814453125
+        ],
+        [
+          816.99853515625,
+          572.0370483398438
+        ],
+        [
+          616.70068359375,
+          572.0370483398438
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "cap_20251219_155946_029_1766131153.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

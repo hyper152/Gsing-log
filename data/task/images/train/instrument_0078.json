@@ -1,0 +1,69 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "device",
+      "score": 0.6060600280761719,
+      "points": [
+        [
+          0.0,
+          295.223876953125
+        ],
+        [
+          737.7781372070312,
+          295.223876953125
+        ],
+        [
+          737.7781372070312,
+          1041.7421875
+        ],
+        [
+          0.0,
+          1041.7421875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "device",
+      "score": 0.37591636180877686,
+      "points": [
+        [
+          207.21112060546875,
+          204.3516845703125
+        ],
+        [
+          1014.0443725585938,
+          204.3516845703125
+        ],
+        [
+          1014.0443725585938,
+          992.09912109375
+        ],
+        [
+          207.21112060546875,
+          992.09912109375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "instrument_0078.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

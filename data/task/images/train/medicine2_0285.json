@@ -1,0 +1,214 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "food",
+      "score": 0.9163348078727722,
+      "points": [
+        [
+          420.4287109375,
+          306.8851318359375
+        ],
+        [
+          511.04833984375,
+          306.8851318359375
+        ],
+        [
+          511.04833984375,
+          437.2213134765625
+        ],
+        [
+          420.4287109375,
+          437.2213134765625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.9104037880897522,
+      "points": [
+        [
+          478.1787414550781,
+          452.95782470703125
+        ],
+        [
+          588.703125,
+          452.95782470703125
+        ],
+        [
+          588.703125,
+          570.5042114257812
+        ],
+        [
+          478.1787414550781,
+          570.5042114257812
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.9018939137458801,
+      "points": [
+        [
+          498.24346923828125,
+          273.8966064453125
+        ],
+        [
+          631.4028930664062,
+          273.8966064453125
+        ],
+        [
+          631.4028930664062,
+          411.0948486328125
+        ],
+        [
+          498.24346923828125,
+          411.0948486328125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8866679072380066,
+      "points": [
+        [
+          574.059814453125,
+          411.1856689453125
+        ],
+        [
+          703.9110107421875,
+          411.1856689453125
+        ],
+        [
+          703.9110107421875,
+          532.6123046875
+        ],
+        [
+          574.059814453125,
+          532.6123046875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.863386869430542,
+      "points": [
+        [
+          831.3150024414062,
+          709.89208984375
+        ],
+        [
+          1221.02783203125,
+          709.89208984375
+        ],
+        [
+          1221.02783203125,
+          1049.88720703125
+        ],
+        [
+          831.3150024414062,
+          1049.88720703125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "remedy",
+      "score": 0.8348942399024963,
+      "points": [
+        [
+          1250.1156005859375,
+          483.02325439453125
+        ],
+        [
+          1481.8162841796875,
+          483.02325439453125
+        ],
+        [
+          1481.8162841796875,
+          1047.332275390625
+        ],
+        [
+          1250.1156005859375,
+          1047.332275390625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "device",
+      "score": 0.7467180490493774,
+      "points": [
+        [
+          434.93560791015625,
+          115.528076171875
+        ],
+        [
+          603.0410766601562,
+          115.528076171875
+        ],
+        [
+          603.0410766601562,
+          272.94482421875
+        ],
+        [
+          434.93560791015625,
+          272.94482421875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "medicine2_0285.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

@@ -1,0 +1,4 @@
+../Core/Src/ax_ps2.c:42:6:AX_PS2_Init	32	static
+../Core/Src/ax_ps2.c:83:16:PS2_ReadWriteData	24	static
+../Core/Src/ax_ps2.c:121:6:AX_PS2_ScanKey	32	static
+../Core/Src/ax_ps2.c:157:6:delay_us	40	static

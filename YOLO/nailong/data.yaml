@@ -1,0 +1,4 @@
+nc: 1
+names: ['nailong']
+train: C:\Users\hyper\Desktop\program\.Gsing\YOLO/nailong/images/train
+val: C:\Users\hyper\Desktop\program\.Gsing\YOLO/nailong/images/val

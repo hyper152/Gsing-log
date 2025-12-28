@@ -1,0 +1,69 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "remedy",
+      "score": 0.3567189574241638,
+      "points": [
+        [
+          1524.9427083333333,
+          900.3699544270834
+        ],
+        [
+          1601.8274739583333,
+          900.3699544270834
+        ],
+        [
+          1601.8274739583333,
+          1000.94970703125
+        ],
+        [
+          1524.9427083333333,
+          1000.94970703125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.251156210899353,
+      "points": [
+        [
+          1127.4181315104167,
+          790.9791666666666
+        ],
+        [
+          1198.7579752604167,
+          790.9791666666666
+        ],
+        [
+          1198.7579752604167,
+          887.2701822916666
+        ],
+        [
+          1127.4181315104167,
+          887.2701822916666
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "frame_000945.jpg",
+  "imageData": null,
+  "imageHeight": 1440,
+  "imageWidth": 2560,
+  "description": ""
+}

@@ -1,0 +1,40 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "remedy",
+      "score": 0.8723458647727966,
+      "points": [
+        [
+          778.5857747395834,
+          110.56429036458333
+        ],
+        [
+          1073.14794921875,
+          110.56429036458333
+        ],
+        [
+          1073.14794921875,
+          510.3124186197917
+        ],
+        [
+          778.5857747395834,
+          510.3124186197917
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "img_20251203_152629_381399.jpg",
+  "imageData": null,
+  "imageHeight": 720,
+  "imageWidth": 1280,
+  "description": ""
+}

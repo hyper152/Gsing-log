@@ -1,0 +1,6 @@
+../Core/Src/servo_arm.c:30:6:Servo_Init	16	static
+../Core/Src/servo_arm.c:47:6:Servo_SetAngle	32	static
+../Core/Src/servo_arm.c:69:13:InverseKinematics	80	static
+../Core/Src/servo_arm.c:116:6:Arm_MoveToPoint	40	static
+../Core/Src/servo_arm.c:129:6:Arm_DrawSquare	64	static
+../Core/Src/servo_arm.c:156:6:Delay_ms	16	static

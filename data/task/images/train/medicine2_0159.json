@@ -1,0 +1,69 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "remedy",
+      "score": 0.42007070779800415,
+      "points": [
+        [
+          805.6402587890625,
+          696.403076171875
+        ],
+        [
+          1220.383544921875,
+          696.403076171875
+        ],
+        [
+          1220.383544921875,
+          1024.568115234375
+        ],
+        [
+          805.6402587890625,
+          1024.568115234375
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "food",
+      "score": 0.2865452766418457,
+      "points": [
+        [
+          0.10257720947265625,
+          299.4658203125
+        ],
+        [
+          82.60584259033203,
+          299.4658203125
+        ],
+        [
+          82.60584259033203,
+          472.391357421875
+        ],
+        [
+          0.10257720947265625,
+          472.391357421875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "medicine2_0159.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}

@@ -1,0 +1,127 @@
+{
+  "version": "3.3.3",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "device",
+      "score": 0.8588155508041382,
+      "points": [
+        [
+          914.7882080078125,
+          299.036865234375
+        ],
+        [
+          1112.496337890625,
+          299.036865234375
+        ],
+        [
+          1112.496337890625,
+          589.5233154296875
+        ],
+        [
+          914.7882080078125,
+          589.5233154296875
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8270250558853149,
+      "points": [
+        [
+          910.229248046875,
+          660.18505859375
+        ],
+        [
+          1074.7900390625,
+          660.18505859375
+        ],
+        [
+          1074.7900390625,
+          952.533203125
+        ],
+        [
+          910.229248046875,
+          952.533203125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "device",
+      "score": 0.8231967091560364,
+      "points": [
+        [
+          1177.9259033203125,
+          254.1697998046875
+        ],
+        [
+          1349.7310791015625,
+          254.1697998046875
+        ],
+        [
+          1349.7310791015625,
+          609.65673828125
+        ],
+        [
+          1177.9259033203125,
+          609.65673828125
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    },
+    {
+      "label": "tool",
+      "score": 0.8014385104179382,
+      "points": [
+        [
+          1184.431396484375,
+          636.0928955078125
+        ],
+        [
+          1375.094482421875,
+          636.0928955078125
+        ],
+        [
+          1375.094482421875,
+          956.8970947265625
+        ],
+        [
+          1184.431396484375,
+          956.8970947265625
+        ]
+      ],
+      "group_id": null,
+      "description": null,
+      "difficult": false,
+      "shape_type": "rectangle",
+      "flags": {},
+      "attributes": {},
+      "kie_linking": []
+    }
+  ],
+  "imagePath": "cap_20251219_152956_639_1766129344.jpg",
+  "imageData": null,
+  "imageHeight": 1080,
+  "imageWidth": 1920,
+  "description": ""
+}
